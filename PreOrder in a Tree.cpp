@@ -17,11 +17,11 @@ struct Node *CreateNode(int data){
 	return n;
 }
 
-void  InOrder(struct Node *root){
+void  PreOrder(struct Node *root){
 	if(root != NULL){
-		InOrder(root->left);
 		printf("%d ", root->data);
-		InOrder(root->right);
+		PreOrder(root->left);
+		PreOrder(root->right);
 	}
 }
 
@@ -42,6 +42,6 @@ int main()
 	p2->left = p4;
 	p2->right = p3;
 	
-	InOrder(p);
+	PreOrder(p);
 	return 0;
 }
