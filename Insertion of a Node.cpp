@@ -16,10 +16,23 @@ void linkedListTraversal(struct Node *ptr) {
 
 struct Node *insert_beg(struct Node *head, int data) {
     struct Node *ptr = (struct Node *)malloc(sizeof(struct Node));
-    ptr->next = head;
+    ptr->next = NULL;
     ptr->data = data;
 
     return ptr;
+}
+struct Node *insert_end(struct Node *head, int data){
+	struct Node *ptr = (struct Node *) malloc (sizeof(struct Node));
+	ptr->data = data;
+	struct Node *p = head;
+	
+	while(p->next != NULL)
+	{
+		p = p->next;
+	}
+	p->next = ptr;
+	ptr->next = NULL;
+	return head;
 }
 
 int main() {
@@ -44,11 +57,13 @@ int main() {
 
     fourth->data = 22;
     fourth->next = NULL;
-
-    printf("Insertion at Beginning : ");
-    head = insert_beg(head, 60);  // Update the head with the new head returned by insert_beg
+	
+	int x;
+	printf("Enter the element u want to enter at End : ");
+	scanf("%d", &x);
+    printf("Insertion at End : \n");
+    head = insert_end(head, x);  // Update the head with the new head returned by insert_beg
     linkedListTraversal(head);
 
     return 0;
 }
-
