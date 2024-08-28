@@ -9,7 +9,7 @@ int binarySearchRecursive(int arr[], int x, int l, int r) {
     int mid = (l + r) / 2;
 
     if (arr[mid] == x) {
-        return 1; // Element found
+        return mid;
     } else if (arr[mid] > x) {
         return binarySearchRecursive(arr, x, l, mid - 1);
     } else {
