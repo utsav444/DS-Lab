@@ -1,32 +1,40 @@
-#include <iostream>
-#include <vector>
-#include <climits>  
-using namespace std;
+#include <stdio.h>
+#include <stdbool.h>
+#include <limits.h>
 
 #define V 9  // Number of vertices in the graph
 
-int minDistance(const vector<int>& dist, const vector<bool>& visited) {
+// Function to find the vertex with the minimum distance value that hasn't been visited yet
+int minDistance(int dist[], bool visited[]) {
     int min = INT_MAX, min_index;
     
     for (int v = 0; v < V; v++)
-        if (!visited[v] && dist[v] <= min)
-            min = dist[v], min_index = v;
+        if (!visited[v] && dist[v] <= min) {
+            min = dist[v];
+            min_index = v;
+        }
     
     return min_index;
 }
 
 // Function to print the shortest path from source to all vertices
-void printSolution(const vector<int>& dist) {
-    cout << "Vertex \t\t Distance from Source\n";
+void printSolution(int dist[]) {
+    printf("Vertex \t\t Distance from Source\n");
     for (int i = 0; i < V; i++)
-        cout << i << " \t\t " << dist[i] << endl;
+        printf("%d \t\t %d\n", i, dist[i]);
 }
 
 // Dijkstra's single source shortest path algorithm for a graph
 // represented using adjacency matrix
 void dijkstra(int graph[V][V], int src) {
-    vector<int> dist(V, INT_MAX);  // The output array. dist[i] holds the shortest distance from src to i
-    vector<bool> visited(V, false);  // visited[i] will be true if vertex i is included in shortest path tree
+    int dist[V];  // The output array. dist[i] holds the shortest distance from src to i
+    bool visited[V];  // visited[i] will be true if vertex i is included in shortest path tree
+    
+    // Initialize distances to all vertices as INFINITE and visited[] as false
+    for (int i = 0; i < V; i++) {
+        dist[i] = INT_MAX;
+        visited[i] = false;
+    }
     
     dist[src] = 0;  // Distance of source vertex from itself is always 0
 
