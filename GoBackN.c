@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define WINDOW_SIZE 4
 #define TOTAL_FRAMES 10
@@ -13,6 +14,8 @@ int main() {
     for (int i = 0; i < TOTAL_FRAMES; i++) {
         frames[i] = i + 1;
     }
+
+    srand(time(NULL));
 
     while (ack_received < TOTAL_FRAMES) {
         for (int i = start; i <= end && i < TOTAL_FRAMES; i++) {
