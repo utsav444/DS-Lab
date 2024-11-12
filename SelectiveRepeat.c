@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define WINDOW_SIZE 4
 #define TOTAL_FRAMES 10
@@ -13,6 +14,8 @@ int main() {
     for (i = 0; i < TOTAL_FRAMES; i++) {
         frames[i] = i;
     }
+
+    srand(time(NULL));
 
     printf("Selective Repeat Protocol:\n");
 
